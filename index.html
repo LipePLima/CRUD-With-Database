@@ -1,33 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CRUD</title>
+
+    <!-- Icone de Seta para baixo -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Icone de camera -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
     <header>
-        <h1>CRUD</h1>
+        <h1 class="title">CRUD</h1>
         <nav>
-            <ul>
-                <li>Página Inicial</li>
-                <li>Sobre</li>
-                <li>ADMIN</li>
+            <ul class="navList">
+                <li class="navList__item">Página Inicial</li>
+                <li class="navList__item">Sobre</li>
+                <li class="navList__item">ADMIN</li>
             </ul>
         </nav>
-        <div>
-            <!-- imagem de usuário -->
+        <div class="divUser">
+            <span class="material-symbols-outlined camera">photo_camera</span>
             <span>Perfil</span>
-            <!-- Seta para baixo -->
+            <span class="material-symbols-outlined">arrow_drop_down</span>
         </div>
     </header>
     <main>
         <section>
-            <h1>Usuário</h1>
-            <input type="text">
-            <div>
-                <button>
+            <h1 class="mainTitle">Usuário</h1>
+            <input type="text" class="searchInput">
+            <div class="divAdd">
+                <button class="btnAdd">
                     <!-- icone + -->
                     <span>Adicionar</span>
                 </button>
@@ -69,6 +77,7 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
       </script>
+      <script src="assets/js/main.js"></script>
 </body>
 </html>
 

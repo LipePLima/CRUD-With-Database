@@ -2,8 +2,12 @@
 
 ## Etapas
 
-1 dia - Criação do Layout
+*Criação do Layout:*
 
- - [ ] Cabeçalho com logo, menu de navegação(Página Inicial/Sobre/ADMIN) e usuário
+ - [x] Cabeçalho com logo(nome), menu de navegação(Página Inicial/Sobre/ADMIN) e usuário;
  
- - [ ] Corpo do site com o CRUD, e uma área de pesquisa de usuário.
+ - [x] Corpo do site com a tabela do CRUD, e uma área de pesquisa de usuário;
+
+ - [x] Estilização do cabeçalho;
+
+ - [ ] Estilização do corpo do site;
