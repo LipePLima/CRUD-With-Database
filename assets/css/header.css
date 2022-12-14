@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
-body {
-    font-family: 'Ubuntu', sans-serif;
-}
-
 header {
     font-family: 'Ubuntu', sans-serif;
     width: 100%;
@@ -30,9 +26,14 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     text-transform: uppercase;
+}
+
+#adm {
+    display: flex;
+    align-items: center;
 }
 
 .navList__item {
@@ -44,14 +45,14 @@ nav {
     border-bottom: 1px solid black;
 }
 
-.divUser {
+.container__user {
     display: flex;
     align-items: center;
     margin-right: 4rem;
     cursor: pointer;
 }
 
-.divUser span {
+.container__user span {
     font-size: 20px;
     font-weight: 500;
     text-transform: uppercase;

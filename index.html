@@ -1,83 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CRUD</title>
 
-    <!-- Icone de Seta para baixo -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <!-- Icone de camera -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<!-- Icone de Seta para baixo -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<!-- Icone de camera -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<!-- Icone mais -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<!-- Icone Remover -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<!-- Icone Lápis -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/index.css">
+	<!-- Links de Estilização -->
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/header.css">
+	<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-    <header>
-        <h1 class="title">CRUD</h1>
-        <nav>
-            <ul class="navList">
-                <li class="navList__item">Página Inicial</li>
-                <li class="navList__item">Sobre</li>
-                <li class="navList__item">ADMIN</li>
-            </ul>
-        </nav>
-        <div class="divUser">
-            <span class="material-symbols-outlined camera">photo_camera</span>
-            <span>Perfil</span>
-            <span class="material-symbols-outlined">arrow_drop_down</span>
-        </div>
-    </header>
-    <main>
-        <section>
-            <h1 class="mainTitle">Usuário</h1>
-            <input type="text" class="searchInput">
-            <div class="divAdd">
-                <button class="btnAdd">
-                    <!-- icone + -->
-                    <span>Adicionar</span>
-                </button>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Nome de Usuário</th>
-                        <th>Email</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-            </table>
-        </section>
-    </main>
-    
+	<header>
+		<h1 class="title">CRUD</h1>
+		<nav>
+			<ul class="navList">
+				<li class="navList__item">Página Inicial</li>
+				<li class="navList__item">Sobre</li>
+				<li class="navList__item" id="adm">ADMIN <span class="material-symbols-outlined">arrow_drop_down</span></li>
+			</ul>
+		</nav>
+		<div class="container__user">
+			<span class="material-symbols-outlined camera">photo_camera</span>
+			<span>Perfil</span>
+			<span class="material-symbols-outlined">arrow_drop_down</span>
+		</div>
+	</header>
+	<main>
+		<section>
+			<h1 class="mainTitle">Usuário</h1>
+			<div class="container__search">
+				<label for="searchInput" class="labelSearch">Pesquisar</label>
+				<input type="text" id="searchInput" class="searchInput" placeholder="Pesquisar">  
+			</div>
+			<div class="container__table">
+				<div class="container__add">
+					<button class="btnAdd">
+						<span class="material-symbols-outlined">add</span>
+						<span>Adicionar</span>
+					</button>
+				</div>
+				<table>
+					<thead>
+						<tr>
+							<th><p class="column-title">Nome</p></th>
+							<th><p class="column-title">Nome de Usuário</p></th>
+							<th><p class="column-title">Email</p></th>
+							<th><p class="column-title">Ação</p></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="trBody">
+							<td class="row-text">Felipe</td>
+							<td class="row-text">LipePLima</td>
+							<td class="row-text">felipe@email.com</td>
+							<td class="rowBtns">
+								<button class="btnTable">
+									<span class="material-symbols-outlined">edit</span>
+								</button>
+								<button class="btnTable">
+									<span class="material-symbols-outlined">close</span>
+								</button>
+							</td>
+						</tr>
+						<tr class="trBody">
+							<td>Felipe</td>
+							<td>LipePLima</td>
+							<td>felipe@email.com</td>
+							<td class="rowBtns">
+								<button class="btnTable">
+									<span class="material-symbols-outlined">edit</span>
+								</button>
+								<button class="btnTable">
+									<span class="material-symbols-outlined">close</span>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>	
+			</div>
+			
+		</section>
+	</main>
+	
 
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyBF-RL0jgkyY-vJM9ztjCv00L0yLFGHHqU",
-          authDomain: "crud-with-database.firebaseapp.com",
-          projectId: "crud-with-database",
-          storageBucket: "crud-with-database.appspot.com",
-          messagingSenderId: "91317888354",
-          appId: "1:91317888354:web:fe9cbd8c473768e7b0f83b",
-          measurementId: "G-0Z3KXPTSK7"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-      </script>
-      <script src="assets/js/main.js"></script>
+	<script type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+	  
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		const firebaseConfig = {
+		  apiKey: "AIzaSyBF-RL0jgkyY-vJM9ztjCv00L0yLFGHHqU",
+		  authDomain: "crud-with-database.firebaseapp.com",
+		  projectId: "crud-with-database",
+		  storageBucket: "crud-with-database.appspot.com",
+		  messagingSenderId: "91317888354",
+		  appId: "1:91317888354:web:fe9cbd8c473768e7b0f83b",
+		  measurementId: "G-0Z3KXPTSK7"
+		};
+	  
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const analytics = getAnalytics(app);
+	  </script>
+	  <script src="assets/js/main.js"></script>
 </body>
 </html>
 

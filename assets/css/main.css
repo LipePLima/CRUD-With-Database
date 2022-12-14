@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+main {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #f0f0f0;
+    height: 100vh;
+    padding: 3rem 4rem;
+}
+
+section {
+    background-color: #ffff;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.mainTitle {
+    font-size: 36px;
+    padding-top: 2rem;
+} 
+
+.container__search {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.labelSearch {
+    font-size: 18px;
+}
+
+.searchInput {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    margin-top: 1rem;
+    padding: 0 0 .5rem 1rem;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+textarea:focus, .searchInput:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+.container__table {
+    margin-top: 1rem;
+    border: 1px solid #808080;
+}
+
+.container__add {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: 5rem;
+}
+
+.btnAdd {
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    align-items: center;
+    margin-right: .5rem;
+    background-color: #ffff;
+    border: none;
+    font-size: 20px;
+    color: rgb(0, 204, 126);
+}
+
+table {
+    width: 100%;
+}
+
+thead {
+    height: 5rem;
+    background-color: rgb(0, 195, 110);
+    color: #ffff;
+}
+
+th {
+    font-size: 18px;
+    text-transform: uppercase;
+    border-right: 1px solid black;
+    width: 100px;
+}
+
+.column-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+}
+
+.trBody {
+    border-bottom: 1px solid #8080808e;
+}
+
+td {
+    padding: 1rem 0 1rem 2rem;
+    text-align: justify;
+}
+
+
+
+.rowBtns {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.btnTable {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}

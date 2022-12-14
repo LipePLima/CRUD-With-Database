@@ -10,4 +10,4 @@
 
  - [x] Estilização do cabeçalho;
 
- - [ ] Estilização do corpo do site;
+ - [x] Estilização do corpo do site;
