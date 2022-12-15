@@ -1,7 +1,10 @@
 const tableBody = document.querySelector('tbody');
 const btnAdd    = document.querySelector('#btnAdd');
+const btnRemove = document.querySelectorAll('#remove');
+removeRow(btnRemove)
 
 btnAdd.addEventListener('click', () => {
+    let i = 0;
     tableBody.innerHTML += `
         <tr class="trBody">
             <td id="name"></td>
@@ -17,17 +20,22 @@ btnAdd.addEventListener('click', () => {
             </td>
         </tr>
     `
+    const newRemove = document.querySelectorAll('#remove');
+    removeRow(newRemove)
 });
 
-const remove = document.querySelectorAll('#remove');
-remove.forEach( e => {
-    console.log(e)
-    e.addEventListener('click', () => {
-        const parent = e.parentNode.parentNode        
-        parent.remove()
-        
+function removeRow (element) {
+    element.forEach( e => {
+        console.log(e)
+        e.addEventListener('click', () => {
+            const parent = e.parentNode.parentNode        
+            parent.remove()
+        })
     })
-})
+}
+
+
+
 
 
 

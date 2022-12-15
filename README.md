@@ -15,5 +15,7 @@
  - [x] Adicionar nova linha ao cliclar no botão adicionar;
 
  - [ ] Editar linha ao clicar no botão de editar;
- 
+
  - [x] Remover linha ao clicar no botão de remover;
+
+ - [x] Remover novas linhas criadas;
