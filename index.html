@@ -47,7 +47,7 @@
 			</div>
 			<div class="container__table">
 				<div class="container__add">
-					<button class="btnAdd">
+					<button class="btnAdd" id="btnAdd">
 						<span class="material-symbols-outlined">add</span>
 						<span>Adicionar</span>
 					</button>
@@ -63,27 +63,27 @@
 					</thead>
 					<tbody>
 						<tr class="trBody">
-							<td class="row-text">Felipe</td>
-							<td class="row-text">LipePLima</td>
-							<td class="row-text">felipe@email.com</td>
+							<td class="row-text" id="name">Felipe</td>
+							<td class="row-text" id="nickname">LipePLima</td>
+							<td class="row-text" id="email">felipe@email.com</td>
 							<td class="rowBtns">
 								<button class="btnTable">
 									<span class="material-symbols-outlined">edit</span>
 								</button>
-								<button class="btnTable">
+								<button class="btnTable" id="remove">
 									<span class="material-symbols-outlined">close</span>
 								</button>
 							</td>
 						</tr>
 						<tr class="trBody">
-							<td>Felipe</td>
-							<td>LipePLima</td>
-							<td>felipe@email.com</td>
+							<td id="name">Larissa</td>
+							<td id="nickname">LarissaB</td>
+							<td id="email">larissa@email.com</td>
 							<td class="rowBtns">
-								<button class="btnTable">
+								<button class="btnTable" id="edit">
 									<span class="material-symbols-outlined">edit</span>
 								</button>
-								<button class="btnTable">
+								<button class="btnTable" id="remove">
 									<span class="material-symbols-outlined">close</span>
 								</button>
 							</td>
@@ -91,11 +91,9 @@
 					</tbody>
 				</table>	
 			</div>
-			
 		</section>
 	</main>
-	
-
+	<script src="assets/js/addRow.js"></script>
 	<script type="module">
 		// Import the functions you need from the SDKs you need
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
@@ -119,7 +117,6 @@
 		const app = initializeApp(firebaseConfig);
 		const analytics = getAnalytics(app);
 	  </script>
-	  <script src="assets/js/main.js"></script>
 </body>
 </html>
 

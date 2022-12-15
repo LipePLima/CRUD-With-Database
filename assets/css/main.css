@@ -62,6 +62,7 @@ textarea:focus, .searchInput:focus {
     border: none;
     font-size: 20px;
     color: rgb(0, 204, 126);
+    cursor: pointer;
 }
 
 table {
@@ -96,8 +97,6 @@ td {
     padding: 1rem 0 1rem 2rem;
     text-align: justify;
 }
-
-
 
 .rowBtns {
     text-align: center;

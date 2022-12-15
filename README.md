@@ -11,3 +11,9 @@
  - [x] Estilização do cabeçalho;
 
  - [x] Estilização do corpo do site;
+
+ - [x] Adicionar nova linha ao cliclar no botão adicionar;
+
+ - [ ] Editar linha ao clicar no botão de editar;
+ 
+ - [x] Remover linha ao clicar no botão de remover;
