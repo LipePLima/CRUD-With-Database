@@ -108,3 +108,14 @@ td {
     border: none;
     background-color: transparent;
 }
+
+.add {
+    display: none;
+}
+
+.inputTd {
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: .2rem;
+}

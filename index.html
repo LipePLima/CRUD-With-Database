@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 	<!-- Icone Lápis -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<!-- Icone Certo -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 	<!-- Links de Estilização -->
 	<link rel="stylesheet" href="assets/css/reset.css">
@@ -64,10 +66,13 @@
 					<tbody>
 						<tr class="trBody">
 							<td class="row-text" id="name">Felipe</td>
-							<td class="row-text" id="nickname">LipePLima</td>
-							<td class="row-text" id="email">felipe@email.com</td>
+							<td class="row-text" id="nickname0">LipePLima</td>
+							<td class="row-text" id="email0">felipe@email.com</td>
 							<td class="rowBtns">
-								<button class="btnTable">
+								<button class="btnTable add" id="add">
+									<span class="material-symbols-outlined">done</span>
+								</button>
+								<button class="btnTable" id="edit">
 									<span class="material-symbols-outlined">edit</span>
 								</button>
 								<button class="btnTable" id="remove">
@@ -77,8 +82,8 @@
 						</tr>
 						<tr class="trBody">
 							<td id="name">Larissa</td>
-							<td id="nickname">LarissaB</td>
-							<td id="email">larissa@email.com</td>
+							<td id="nickname1">LarissaB</td>
+							<td id="email1">larissa@email.com</td>
 							<td class="rowBtns">
 								<button class="btnTable" id="edit">
 									<span class="material-symbols-outlined">edit</span>
@@ -93,7 +98,7 @@
 			</div>
 		</section>
 	</main>
-	<script src="assets/js/addRow.js"></script>
+	<script src="assets/js/editRow.js"></script>
 	<script type="module">
 		// Import the functions you need from the SDKs you need
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
@@ -116,6 +121,7 @@
 		// Initialize Firebase
 		const app = initializeApp(firebaseConfig);
 		const analytics = getAnalytics(app);
+		// const db = getFirestore(app);
 	  </script>
 </body>
 </html>
