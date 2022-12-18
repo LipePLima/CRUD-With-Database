@@ -20,4 +20,4 @@
 
  - [x] Remover novas linhas criadas;
 
- - [ ] Salvar alteração dos dados;
+ - [x] Manter alteração dos dados;
