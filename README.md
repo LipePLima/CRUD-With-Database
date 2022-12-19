@@ -2,7 +2,7 @@
 
 ## Etapas
 
-*Criação do Layout:*
+**Criação do Layout:**
 
  - [x] Cabeçalho com logo(nome), menu de navegação(Página Inicial/Sobre/ADMIN) e usuário;
  
@@ -21,3 +21,5 @@
  - [x] Remover novas linhas criadas;
 
  - [x] Manter alteração dos dados;
+
+ - [ ] Filtragem de dados;

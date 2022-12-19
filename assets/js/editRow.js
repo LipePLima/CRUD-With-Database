@@ -24,10 +24,12 @@ btnAdd.addEventListener('click', () => {
         </td>
     </tr>
     `
+    const newRows   = document.querySelectorAll('.trBody');
     const newRemove = document.querySelectorAll('#remove');
     const newEdit   = document.querySelectorAll('#edit');
     removeRow(newRemove)
     editRow(newEdit)
+    filter(newRows)
 });
 
 function editRow (element) {
