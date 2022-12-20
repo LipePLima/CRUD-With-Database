@@ -22,4 +22,4 @@
 
  - [x] Manter alteração dos dados;
 
- - [ ] Filtragem de dados;
+ - [x] Filtragem de dados;
