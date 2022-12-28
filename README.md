@@ -23,3 +23,9 @@
  - [x] Manter alteração dos dados;
 
  - [x] Filtragem de dados;
+
+ - [ ] Armazenando todos os dados no localStorage;
+
+Extra: 
+
+ - [ ] Armazenar no banco de dados Firebase;

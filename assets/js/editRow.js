@@ -2,35 +2,39 @@ const tableBody  = document.querySelector('tbody');
 const btnAdd     = document.querySelector('#btnAdd');
 const btnRemove  = document.querySelectorAll('#remove');
 const edit       = document.querySelectorAll('#edit');
-const funcRemove = removeRow(btnRemove);
-const funcEdit   = editRow(edit)
 
-btnAdd.addEventListener('click', () => {
-    tableBody.innerHTML += `
-    <tr class="trBody">
-        <td class="row-text" id="name"></td>
-        <td class="row-text" id="nick"></td>
-        <td class="row-text" id="email"></td>
-        <td class="rowBtns">
-            <button class="btnTable add" id="add">
-                <span class="material-symbols-outlined">done</span>
-            </button>
-            <button class="btnTable" id="edit">
-                <span class="material-symbols-outlined">edit</span>
-            </button>
-            <button class="btnTable" id="remove">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </td>
-    </tr>
-    `
-    const newRows   = document.querySelectorAll('.trBody');
-    const newRemove = document.querySelectorAll('#remove');
-    const newEdit   = document.querySelectorAll('#edit');
-    removeRow(newRemove)
-    editRow(newEdit)
-    filter(newRows)
-});
+const funcAdd    = addRow(btnAdd);
+const funcRemove = removeRow(btnRemove);
+const funcEdit   = editRow(edit);
+
+function addRow (element) {
+    btnAdd.addEventListener('click', () => {
+        tableBody.innerHTML += `
+        <tr class="trBody">
+            <td class="row-text" id="name"></td>
+            <td class="row-text" id="nick"></td>
+            <td class="row-text" id="email"></td>
+            <td class="rowBtns">
+                <button class="btnTable add" id="add">
+                    <span class="material-symbols-outlined">done</span>
+                </button>
+                <button class="btnTable" id="edit">
+                    <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button class="btnTable" id="remove">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </td>
+        </tr>
+        `
+        const newRows   = document.querySelectorAll('.trBody');
+        const newRemove = document.querySelectorAll('#remove');
+        const newEdit   = document.querySelectorAll('#edit');
+        removeRow(newRemove)
+        editRow(newEdit)
+        filter(newRows)
+    });
+}
 
 function editRow (element) {
     element.forEach( e => {
@@ -50,18 +54,21 @@ function editRow (element) {
             
             const inputTd = document.querySelectorAll('.inputTd');
             inputTd.forEach( input => {
-                input.addEventListener('input', event => {
+                input.addEventListener('input', () => {
                     const parentInput = input.parentNode
 
                     newAdd.addEventListener('click', () => {
                         listTd.forEach( el => {
-                            parentInput.innerHTML =  `<a>${input.value}</a>`
+                            parentInput.innerHTML =  `<p>${input.value}</p>`
 
                             if (el.children[0].value != undefined)  {
                                 el.innerHTML = el.children[0].value
-                                newAdd.classList.add('add');
                             }    
+
+                            newAdd.classList.add('add');
                         }) 
+
+                        dbClient(listTd);
                     })
                 })                         
             })     
@@ -76,4 +83,20 @@ function removeRow (element) {
             parent.remove()
         })
     })
+}
+
+let list = []
+
+function dbClient (element) {
+    if (localStorage.client) {
+        list = JSON.parse(localStorage.getItem('client'));
+    }
+
+    list.push({
+        nome: element[0].textContent,
+        nick: element[1].textContent,
+        Email: element[2].textContent
+    });
+
+    localStorage.client = JSON.stringify(list)
 }
