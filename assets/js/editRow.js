@@ -7,6 +7,10 @@ const funcAdd    = addRow(btnAdd);
 const funcRemove = removeRow(btnRemove);
 const funcEdit   = editRow(edit);
 
+if (localStorage.client) {
+    JSON.parse(localStorage.getItem("client"))
+}
+
 function addRow (element) {
     btnAdd.addEventListener('click', () => {
         tableBody.innerHTML += `
@@ -38,42 +42,35 @@ function addRow (element) {
 
 function editRow (element) {
     element.forEach( e => {
-        e.addEventListener('click', () => {
-            const listTd = [
-                e.parentNode.parentNode.querySelector('#name'), 
-                e.parentNode.parentNode.querySelector('#nick'), 
-                e.parentNode.parentNode.querySelector('#email')
-            ];
-            
-            const newAdd = e.parentNode.parentNode.querySelector('#add');
+        const listTd = [
+            e.parentNode.parentNode.querySelector('#name'), 
+            e.parentNode.parentNode.querySelector('#nick'), 
+            e.parentNode.parentNode.querySelector('#email')
+        ];
+
+        const newAdd = e.parentNode.parentNode.querySelector('#add');
+
+        e.addEventListener('click', () => {           
             newAdd.classList.remove('add');  
 
             listTd.forEach( el => {
                 el.innerHTML = `<input type="text" class="inputTd" value="${el.textContent}">`                
-            })   
-            
+            })                       
+        })     
+
+        newAdd.addEventListener('click', () => {
             const inputTd = document.querySelectorAll('.inputTd');
-            console.log(inputTd)
+
             inputTd.forEach( input => {
-                input.addEventListener('input', () => {
-                    const parentInput = input.parentNode
+                const parentInput = input.parentNode
+                console.log(input.value)
 
-                    newAdd.addEventListener('click', () => {
-                        listTd.forEach( el => {
-                            parentInput.innerHTML =  `<p>${input.value}</p>`
+                parentInput.innerHTML =  `<p>${input.value}</p>`
     
-                            if (el.children[0].value != undefined)  {
-                                el.innerHTML = el.children[0].value
-                                console.log(el.children[0])
-                            }    
-    
-                            newAdd.classList.add('add');
-
-                            dbClient(listTd)
-                        })                         
-                    })
-                })                         
+                newAdd.classList.toggle('add');                                 
             })     
+
+            dbClient(listTd)
         })
     })
 }
@@ -87,11 +84,11 @@ function removeRow (element) {
     })
 }
 
-const list = [];
+let list = [];
 
 function dbClient (element) {
     if (localStorage.client) {
-        list = JSON.parse(localStorage.getItem('client'));
+        list = JSON.parse(localStorage.getItem("client"));
     }
 
     const newItem = {

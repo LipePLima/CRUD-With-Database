@@ -26,7 +26,9 @@
 
  - [x] Armazenando todos os dados no localStorage;
 
- - [ ] Impedir que os dados seja triplicados;
+ - [x] Impedir que os dados seja triplicados;
+
+ - [ ] Exibir dados do localStorage;
 
 Extra: 
 
