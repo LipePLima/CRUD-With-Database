@@ -24,7 +24,9 @@
 
  - [x] Filtragem de dados;
 
- - [ ] Armazenando todos os dados no localStorage;
+ - [x] Armazenando todos os dados no localStorage;
+
+ - [ ] Impedir que os dados seja triplicados;
 
 Extra: 
 

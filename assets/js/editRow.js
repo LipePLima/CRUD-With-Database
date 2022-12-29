@@ -53,6 +53,7 @@ function editRow (element) {
             })   
             
             const inputTd = document.querySelectorAll('.inputTd');
+            console.log(inputTd)
             inputTd.forEach( input => {
                 input.addEventListener('input', () => {
                     const parentInput = input.parentNode
@@ -60,15 +61,14 @@ function editRow (element) {
                     newAdd.addEventListener('click', () => {
                         listTd.forEach( el => {
                             parentInput.innerHTML =  `<p>${input.value}</p>`
-
+    
                             if (el.children[0].value != undefined)  {
                                 el.innerHTML = el.children[0].value
+                                console.log(el.children[0])
                             }    
-
+    
                             newAdd.classList.add('add');
-                        }) 
-
-                        dbClient(listTd);
+                        })                         
                     })
                 })                         
             })     
@@ -85,18 +85,20 @@ function removeRow (element) {
     })
 }
 
-let list = []
+const list = [];
 
 function dbClient (element) {
     if (localStorage.client) {
         list = JSON.parse(localStorage.getItem('client'));
     }
 
-    list.push({
+    const newItem = {
         nome: element[0].textContent,
         nick: element[1].textContent,
         Email: element[2].textContent
-    });
+    }
 
-    localStorage.client = JSON.stringify(list)
+    list.push(newItem);
+
+    localStorage.setItem("client", JSON.stringify(list))
 }
