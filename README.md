@@ -28,9 +28,9 @@
 
  - [x] Impedir que os dados seja triplicados;
 
- - [ ] Verificação de lista vazia;
+ - [x] Verificação de lista vazia;
 
- - [ ] Exibir dados do localStorage;
+ - [x] Exibir dados do localStorage;
 
 Extra: 
 

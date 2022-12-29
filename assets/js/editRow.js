@@ -2,12 +2,17 @@ const tableBody  = document.querySelector('tbody');
 const btnAdd     = document.querySelector('#btnAdd');
 const btnRemove  = document.querySelectorAll('#remove');
 const edit       = document.querySelectorAll('#edit');
+const client     = JSON.parse(localStorage.getItem("client"));
 
-const funcAdd    = addRow(btnAdd);
+if (client != null) {
+    getDb(client)
+}
+
+const funcAdd    = addRowWithBtn(btnAdd);
 const funcRemove = removeRow(btnRemove);
 const funcEdit   = editRow(edit);
 
-function addRow (element) {
+function addRowWithBtn (element) {
     btnAdd.addEventListener('click', () => {
         tableBody.innerHTML += `
         <tr class="trBody">
@@ -34,6 +39,27 @@ function addRow (element) {
         editRow(newEdit)
         filter(newRows)
     });
+}
+
+function addRow () {
+    tableBody.innerHTML += `
+    <tr class="trBody">
+        <td class="row-text" id="name"></td>
+        <td class="row-text" id="nick"></td>
+        <td class="row-text" id="email"></td>
+        <td class="rowBtns">
+            <button class="btnTable add" id="add">
+                <span class="material-symbols-outlined">done</span>
+            </button>
+            <button class="btnTable" id="edit">
+                <span class="material-symbols-outlined">edit</span>
+            </button>
+            <button class="btnTable" id="remove">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </td>
+    </tr>
+    `
 }
 
 function editRow (element) {
@@ -97,4 +123,22 @@ function dbClient (element) {
     list.push(newItem);
 
     localStorage.setItem("client", JSON.stringify(list))
+}
+
+function getDb (element) {
+    for (let i = 1; i < element.length; i++) {
+        addRow()
+    }
+
+    const rows    = document.querySelectorAll('.trBody');
+    
+    for (let i = 0; i < rows.length; i++) {
+        const name  = rows[i].querySelector('#name');
+        const nick  = rows[i].querySelector('#nick');
+        const email = rows[i].querySelector('#email');
+
+        name.textContent = element[i].nome;
+        nick.textContent = element[i].nick;
+        email.textContent = element[i].Email;
+    }
 }
