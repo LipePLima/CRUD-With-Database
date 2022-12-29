@@ -7,10 +7,6 @@ const funcAdd    = addRow(btnAdd);
 const funcRemove = removeRow(btnRemove);
 const funcEdit   = editRow(edit);
 
-if (localStorage.client) {
-    JSON.parse(localStorage.getItem("client"))
-}
-
 function addRow (element) {
     btnAdd.addEventListener('click', () => {
         tableBody.innerHTML += `
@@ -63,14 +59,15 @@ function editRow (element) {
 
             inputTd.forEach( input => {
                 const parentInput = input.parentNode
-                console.log(input.value)
 
                 parentInput.innerHTML =  `<p>${input.value}</p>`
     
-                newAdd.classList.toggle('add');                                 
-            })     
+                newAdd.classList.toggle('add');  
+            }) 
 
-            dbClient(listTd)
+            if (inputTd[0].value.length > 0 && inputTd[1].value.length > 0 && inputTd[2].value.length > 0) {
+                dbClient(listTd)
+            }
         })
     })
 }
