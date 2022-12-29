@@ -68,6 +68,8 @@ function editRow (element) {
                             }    
     
                             newAdd.classList.add('add');
+
+                            dbClient(listTd)
                         })                         
                     })
                 })                         
