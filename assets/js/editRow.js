@@ -3,9 +3,15 @@ const btnAdd     = document.querySelector('#btnAdd');
 const btnRemove  = document.querySelectorAll('#remove');
 const edit       = document.querySelectorAll('#edit');
 
+const client     = JSON.parse(localStorage.getItem("client"));
+
+console.log(client)
 if (client != null) {
-    getDb(client)
+    if (client.length != 0) {
+        getDb(client)
+    }
 }
+
 
 const funcAdd    = addRowWithBtn(btnAdd);
 const funcRemove = removeRow(btnRemove);
@@ -85,7 +91,7 @@ function addRowWithBtn (element) {
             inputTd.forEach( input => {
                 const parentInput = input.parentNode
 
-                parentInput.innerHTML =  `<p>${input.value}</p>`
+                parentInput.innerHTML = `<p>${input.value}</p>`
     
                 newAdd.classList.toggle('add');  
             }) 
@@ -102,38 +108,50 @@ function addRowWithBtn (element) {
 }
 
 function editRowWithBtn (element) {
-    element.forEach( e => {
+    for (let i = 0; i < element.length; i++) {
+        if (localStorage.client) {
+            list = JSON.parse(localStorage.getItem("client"));
+        }
+        
         const listTd = [
-            e.parentNode.parentNode.querySelector('#name'), 
-            e.parentNode.parentNode.querySelector('#nick'), 
-            e.parentNode.parentNode.querySelector('#email')
+            element[i].parentNode.parentNode.querySelector('#name'), 
+            element[i].parentNode.parentNode.querySelector('#nick'), 
+            element[i].parentNode.parentNode.querySelector('#email')
         ];
 
-        const newAdd = e.parentNode.parentNode.querySelector('#add');
+        const Add = element[i].parentNode.parentNode.querySelector('#add');
 
-        e.addEventListener('click', () => {           
-            newAdd.classList.remove('add');  
+        element[i].addEventListener('click', () => {           
+            Add.classList.remove('add');  
 
             listTd.forEach( el => {
                 el.innerHTML = `<input type="text" class="inputTd" value="${el.textContent}">`                
-            })                       
+            })                     
+            
+            console.log(list[i])
         })     
 
-        newAdd.addEventListener('click', () => {
+        Add.addEventListener('click', () => {
             const inputTd = document.querySelectorAll('.inputTd');
 
             inputTd.forEach( input => {
                 const parentInput     = input.parentNode
                 parentInput.innerHTML =  `<p>${input.value}</p>`
     
-                newAdd.classList.toggle('add');  
+                Add.classList.toggle('add');  
             }) 
 
             if (inputTd[0].value.length > 0 && inputTd[1].value.length > 0 && inputTd[2].value.length > 0) {
-                dbClient(listTd)
+                list[i] = {
+                    nome: listTd[0].textContent,
+                    nick: listTd[1].textContent,
+                    email: listTd[2].textContent
+                }
+
+                localStorage.setItem("client", JSON.stringify(list))
             }
         })
-    })
+    }
 }
 
 function removeRow (element) {
@@ -143,11 +161,11 @@ function removeRow (element) {
     
     for (let i = 0; i < element.length; i++) {
         element[i].addEventListener('click', () => {
-            const loc = list.indexOf(list[i]);
+            const locRemove = list.indexOf(list[i]);
 
-            if (loc > -1) {
-                list.splice(loc, 1);
-                console.log(list)
+            if (locRemove > -1) {
+                list.splice(locRemove, 1);
+
                 localStorage.setItem("client", JSON.stringify(list))
             }
 

@@ -36,6 +36,8 @@
 
  - [x] Adicionar linha pronta para ser preenchida;
 
+ - [x] Alterar dados na lista e no localStorage;
+
 Extra: 
 
  - [ ] Armazenar no banco de dados Firebase;
