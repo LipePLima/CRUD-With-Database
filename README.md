@@ -34,6 +34,8 @@
 
  - [x] Remover dado do localStorage ao remover linha da tabela;
 
+ - [x] Adicionar linha pronta para ser preenchida;
+
 Extra: 
 
  - [ ] Armazenar no banco de dados Firebase;

@@ -3,45 +3,13 @@ const btnAdd     = document.querySelector('#btnAdd');
 const btnRemove  = document.querySelectorAll('#remove');
 const edit       = document.querySelectorAll('#edit');
 
-let list         = [];
-const client     = JSON.parse(localStorage.getItem("client"));
-
 if (client != null) {
     getDb(client)
 }
 
 const funcAdd    = addRowWithBtn(btnAdd);
 const funcRemove = removeRow(btnRemove);
-const funcEdit   = editRow(edit);
-
-function addRowWithBtn (element) {
-    btnAdd.addEventListener('click', () => {
-        tableBody.innerHTML += `
-        <tr class="trBody">
-            <td class="row-text" id="name"></td>
-            <td class="row-text" id="nick"></td>
-            <td class="row-text" id="email"></td>
-            <td class="rowBtns">
-                <button class="btnTable add" id="add">
-                    <span class="material-symbols-outlined">done</span>
-                </button>
-                <button class="btnTable" id="edit">
-                    <span class="material-symbols-outlined">edit</span>
-                </button>
-                <button class="btnTable" id="remove">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
-            </td>
-        </tr>
-        `
-        const newRows   = document.querySelectorAll('.trBody');
-        const newRemove = document.querySelectorAll('#remove');
-        const newEdit   = document.querySelectorAll('#edit');
-        removeRow(newRemove)
-        editRow(newEdit)
-        filter(newRows)
-    });
-}
+const funcEdit   = editRowWithBtn(edit);
 
 function addRow () {
     tableBody.innerHTML += `
@@ -67,10 +35,73 @@ function addRow () {
     const newEdit   = document.querySelectorAll('#edit');
     
     removeRow(newRemove)
-    editRow(newEdit)
+    editRowWithBtn(newEdit)
 }
 
-function editRow (element) {
+function addRowWithBtn (element) {
+    btnAdd.addEventListener('click', () => {
+        tableBody.innerHTML += `
+        <tr class="trBody">
+            <td class="row-text" id="name"></td>
+            <td class="row-text" id="nick"></td>
+            <td class="row-text" id="email"></td>
+            <td class="rowBtns">
+                <button class="btnTable add" id="add">
+                    <span class="material-symbols-outlined">done</span>
+                </button>
+                <button class="btnTable" id="edit">
+                    <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button class="btnTable" id="remove">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </td>
+        </tr>
+        `
+
+        const newRows   = document.querySelectorAll('.trBody');
+        const newRemove = document.querySelectorAll('#remove');
+        const newEdit   = document.querySelectorAll('#edit');
+
+        const newRow    = newRows[newRows.length - 1];
+
+        const listTd = [
+            newRow.querySelector('#name'), 
+            newRow.querySelector('#nick'), 
+            newRow.querySelector('#email')
+        ];
+
+        listTd.forEach( el => {
+            el.innerHTML = `<input type="text" class="inputTd" value="${el.textContent}">`                
+        })  
+
+        const newAdd = newRow.querySelector('#add');
+   
+        newAdd.classList.remove('add');  
+                    
+        newAdd.addEventListener('click', () => {
+            const inputTd = newRow.querySelectorAll('.inputTd');
+
+            inputTd.forEach( input => {
+                const parentInput = input.parentNode
+
+                parentInput.innerHTML =  `<p>${input.value}</p>`
+    
+                newAdd.classList.toggle('add');  
+            }) 
+
+            if (inputTd[0].value.length > 0 && inputTd[1].value.length > 0 && inputTd[2].value.length > 0) {
+                dbClient(listTd)
+            }
+        })
+
+        removeRow(newRemove)
+        editRowWithBtn(newEdit)
+        filter(newRows)
+    });
+}
+
+function editRowWithBtn (element) {
     element.forEach( e => {
         const listTd = [
             e.parentNode.parentNode.querySelector('#name'), 
@@ -92,8 +123,7 @@ function editRow (element) {
             const inputTd = document.querySelectorAll('.inputTd');
 
             inputTd.forEach( input => {
-                const parentInput = input.parentNode
-
+                const parentInput     = input.parentNode
                 parentInput.innerHTML =  `<p>${input.value}</p>`
     
                 newAdd.classList.toggle('add');  
@@ -124,39 +154,5 @@ function removeRow (element) {
             const parent = element[i].parentNode.parentNode      
             parent.remove()
         })
-    }
-}
-
-function dbClient (element) {
-    if (localStorage.client) {
-        list = JSON.parse(localStorage.getItem("client"));
-    }
-
-    const newItem = {
-        nome: element[0].textContent,
-        nick: element[1].textContent,
-        Email: element[2].textContent
-    }
-
-    list.push(newItem);
-
-    localStorage.setItem("client", JSON.stringify(list))
-}
-
-function getDb (element) {
-    for (let i = 1; i < element.length; i++) {
-        addRow()
-    }
-
-    const rows    = document.querySelectorAll('.trBody');
-
-    for (let i = 0; i < rows.length; i++) {
-        const name  = rows[i].querySelector('#name');
-        const nick  = rows[i].querySelector('#nick');
-        const email = rows[i].querySelector('#email');
-
-        name.textContent = element[i].nome;
-        nick.textContent = element[i].nick;
-        email.textContent = element[i].Email;
     }
 }
