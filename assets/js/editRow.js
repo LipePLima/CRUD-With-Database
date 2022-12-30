@@ -2,6 +2,8 @@ const tableBody  = document.querySelector('tbody');
 const btnAdd     = document.querySelector('#btnAdd');
 const btnRemove  = document.querySelectorAll('#remove');
 const edit       = document.querySelectorAll('#edit');
+
+let list         = [];
 const client     = JSON.parse(localStorage.getItem("client"));
 
 if (client != null) {
@@ -60,6 +62,12 @@ function addRow () {
         </td>
     </tr>
     `
+
+    const newRemove = document.querySelectorAll('#remove');
+    const newEdit   = document.querySelectorAll('#edit');
+    
+    removeRow(newRemove)
+    editRow(newEdit)
 }
 
 function editRow (element) {
@@ -99,15 +107,25 @@ function editRow (element) {
 }
 
 function removeRow (element) {
-    element.forEach( e => {
-        e.addEventListener('click', () => {
-            const parent = e.parentNode.parentNode      
+    if (localStorage.client) {
+        list = JSON.parse(localStorage.getItem("client"));
+    }
+    
+    for (let i = 0; i < element.length; i++) {
+        element[i].addEventListener('click', () => {
+            const loc = list.indexOf(list[i]);
+
+            if (loc > -1) {
+                list.splice(loc, 1);
+                console.log(list)
+                localStorage.setItem("client", JSON.stringify(list))
+            }
+
+            const parent = element[i].parentNode.parentNode      
             parent.remove()
         })
-    })
+    }
 }
-
-let list = [];
 
 function dbClient (element) {
     if (localStorage.client) {
@@ -131,7 +149,7 @@ function getDb (element) {
     }
 
     const rows    = document.querySelectorAll('.trBody');
-    
+
     for (let i = 0; i < rows.length; i++) {
         const name  = rows[i].querySelector('#name');
         const nick  = rows[i].querySelector('#nick');

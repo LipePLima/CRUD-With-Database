@@ -32,6 +32,8 @@
 
  - [x] Exibir dados do localStorage;
 
+ - [x] Remover dado do localStorage ao remover linha da tabela;
+
 Extra: 
 
  - [ ] Armazenar no banco de dados Firebase;
