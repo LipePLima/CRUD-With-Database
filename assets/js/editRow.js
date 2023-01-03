@@ -1,9 +1,9 @@
-const tableBody  = document.querySelector('tbody');
-const btnAdd     = document.querySelector('#btnAdd');
-const btnRemove  = document.querySelectorAll('#remove');
-const edit       = document.querySelectorAll('#edit');
+const tableBody = document.querySelector('tbody');
+const btnAdd    = document.querySelector('#btnAdd');
+const btnRemove = document.querySelectorAll('#remove');
+const edit      = document.querySelectorAll('#edit');
 
-const client     = JSON.parse(localStorage.getItem("client"));
+const client    = JSON.parse(localStorage.getItem("client"));
 
 console.log(client)
 if (client != null) {
@@ -11,7 +11,6 @@ if (client != null) {
         getDb(client)
     }
 }
-
 
 const funcAdd    = addRowWithBtn(btnAdd);
 const funcRemove = removeRow(btnRemove);
@@ -45,7 +44,7 @@ function addRow () {
 }
 
 function addRowWithBtn (element) {
-    btnAdd.addEventListener('click', () => {
+    element.addEventListener('click', () => {
         tableBody.innerHTML += `
         <tr class="trBody">
             <td class="row-text" id="name"></td>
@@ -112,14 +111,16 @@ function editRowWithBtn (element) {
         if (localStorage.client) {
             list = JSON.parse(localStorage.getItem("client"));
         }
+
+        const parentElement = element[i].parentNode.parentNode;
         
         const listTd = [
-            element[i].parentNode.parentNode.querySelector('#name'), 
-            element[i].parentNode.parentNode.querySelector('#nick'), 
-            element[i].parentNode.parentNode.querySelector('#email')
+            parentElement.querySelector('#name'), 
+            parentElement.querySelector('#nick'), 
+            parentElement.querySelector('#email')
         ];
 
-        const Add = element[i].parentNode.parentNode.querySelector('#add');
+        const Add = parentElement.querySelector('#add');
 
         element[i].addEventListener('click', () => {           
             Add.classList.remove('add');  

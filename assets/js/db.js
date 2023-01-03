@@ -15,10 +15,6 @@ function dbClient (element) {
 
     localStorage.setItem("client", JSON.stringify(list))
 }
-
-function editClient (element) {
-
-}
  
 function getDb (element) {
        for (let i = 1; i < element.length; i++) {
