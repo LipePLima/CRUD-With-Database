@@ -66,7 +66,7 @@ Extra:
 
 <h3> :camera: Página Única</h3>
 
-![1Página](https://user-images.githubusercontent.com/102830741/210109817-496d9f8a-d12f-4e33-a441-18e82fab387a.png)
+![1Página](https://user-images.githubusercontent.com/102830741/210109817-496d9f8a-d12f-4e33-a441-18e82fab387a.png#vitrinedev)
 
 ## Depoimento
 
